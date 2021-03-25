@@ -24,6 +24,13 @@ yarn install
 yarn server-start
 ```
 
+## 😐 Client
+
+```shell
+yarn client-dev
+yarn client-start
+```
+
 ## 📝 License
 
 This project is licensed under the GNU GENERAL PUBLIC LICENSE, Copyright (c) 2021 DC Media S.A (Pty) Ltd . For more information see [LICENSE](LICENSE).
