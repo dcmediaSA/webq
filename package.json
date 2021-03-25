@@ -1,0 +1,24 @@
+{
+    "name": "webq",
+    "version": "0.1.0",
+    "author": "railek <jean@railek.com>",
+    "license": "AGPL-3.0",
+    "private": true,
+    "workspaces": [
+        "server"
+    ],
+    "husky": {
+        "hooks": {
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+        }
+    },
+    "scripts": {
+        "server-start": "yarn workspace server start",
+        "install-packages": "yarn install"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^12.1.1",
+        "@commitlint/config-conventional": "^12.1.1",
+        "husky": "^6.0.0"
+    }
+}
