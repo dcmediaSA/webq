@@ -79,6 +79,14 @@ class Service {
         return nextTicket;
     }
 
+    getQueue() {
+        return this.queue;
+    }
+
+    getAssigned() {
+        return this.assigned;
+    }
+
     saveData() {
         const jsonData = {
             date: this.date,

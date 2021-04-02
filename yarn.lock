@@ -1393,6 +1393,16 @@
     minimatch "^3.0.4"
     strip-json-comments "^3.1.1"
 
+"@fontsource/poppins@^4.2.2":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/poppins/-/poppins-4.3.0.tgz#10feb9e1ddecb3adf406ac8c0548e8a9e599d0e1"
+  integrity sha512-SSZOiqlEVH6KjgzOaDIi6r6JhvHK2Cht+XwkALD/KEPzf10QjHVszEamVjr71eSfB8xweabiP8u5/gnGEkIEsw==
+
+"@fontsource/space-mono@^4.2.2":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@fontsource/space-mono/-/space-mono-4.3.0.tgz#0a9f3c2cd9cd165f7dee8ce1e17a63894ac12606"
+  integrity sha512-/xntHkZtDHtbD/JcYghHM/jZRzk+sMFLCj+/ytFulXLNQ0GXXw2aQiXqlEKcGSYo/3psBPwjKfG3zyulx1d90g==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
