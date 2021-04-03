@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle } from '../components';
+import { SectionTitle, SEO } from '../components';
 
 export default function Dashboard() {
     const [ticket, setTicket] = useState({ number: null, counter: null });
@@ -23,6 +23,8 @@ export default function Dashboard() {
 
     return (
         <>
+            <SEO title="Dashboard" />
+
             <section>
                 <SectionTitle
                     title="Notifications"

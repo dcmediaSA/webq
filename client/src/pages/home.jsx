@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle } from '../components';
+import { SectionTitle, SEO } from '../components';
 
 export default function Home() {
     const { socket } = useContext(SocketContext);
@@ -21,6 +21,8 @@ export default function Home() {
 
     return (
         <>
+            <SEO title="Home" />
+
             <SectionTitle
                 title="Counter Setup"
                 subtitle="Select your assigned counter number below."

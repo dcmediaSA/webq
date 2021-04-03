@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle } from '../components';
+import { SectionTitle, SEO } from '../components';
 
 export default function Ticket() {
     const [ticket, setTicket] = useState(null);
@@ -15,6 +15,8 @@ export default function Ticket() {
 
     return (
         <>
+            <SEO title="Ticket" />
+
             <SectionTitle
                 title="Ticketing System"
                 subtitle="Print your ticket and join the queue."
