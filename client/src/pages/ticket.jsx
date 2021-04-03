@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
+import { SectionTitle } from '../components';
 
 export default function Ticket() {
     const [ticket, setTicket] = useState(null);
@@ -14,6 +15,11 @@ export default function Ticket() {
 
     return (
         <>
+            <SectionTitle
+                title="Ticketing System"
+                subtitle="Print your ticket and join the queue."
+            />
+
             <button onClick={newTicket} type="button">
                 Print Ticket
             </button>

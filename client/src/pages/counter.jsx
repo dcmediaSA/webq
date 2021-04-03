@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
+import { SectionTitle } from '../components';
 
 const Redirect = () => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -38,7 +39,10 @@ export default function Counter() {
 
     return (
         <>
-            <h1>{`Counter: ${counter}`}</h1>
+            <SectionTitle
+                title={`Counter ${counter}`}
+                subtitle="Notify waiting cliients you're ready to see them."
+            />
 
             <button onClick={handleClick} type="button">
                 {!active ? <span>Start Session</span> : <span>End Session</span>}

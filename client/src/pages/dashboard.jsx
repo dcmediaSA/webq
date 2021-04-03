@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
+import { SectionTitle } from '../components';
 
 export default function Dashboard() {
     const [ticket, setTicket] = useState({ number: null, counter: null });
@@ -23,6 +24,11 @@ export default function Dashboard() {
     return (
         <>
             <section>
+                <SectionTitle
+                    title="Notifications"
+                    subtitle="All relevant alerts will be displayed here."
+                />
+
                 {ticket.number ? (
                     <h1>
                         {`Ticket ${ticket.number}, Please proceed to Counter ${ticket.counter}`}
@@ -33,6 +39,8 @@ export default function Dashboard() {
             </section>
 
             <section>
+                <SectionTitle title="Queue" subtitle="Please wait for your ticket to be called." />
+
                 {queue.length !== 0 ? (
                     <>
                         {queue.map(({ number }) => (
@@ -47,6 +55,8 @@ export default function Dashboard() {
             </section>
 
             <section>
+                <SectionTitle title="Now Serving" subtitle="People currently being helped." />
+
                 {tickets.length !== 0 ? (
                     <>
                         {tickets.map(({ number, counter }) => (
