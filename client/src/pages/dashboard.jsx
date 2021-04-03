@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO } from '../components';
+import { SectionTitle, SEO, EmptyList } from '../components';
 
 export default function Dashboard() {
     const [ticket, setTicket] = useState({ number: null, counter: null });
@@ -36,7 +36,7 @@ export default function Dashboard() {
                         {`Ticket ${ticket.number}, Please proceed to Counter ${ticket.counter}`}
                     </h1>
                 ) : (
-                    ''
+                    <EmptyList />
                 )}
             </section>
 
@@ -52,7 +52,7 @@ export default function Dashboard() {
                         ))}
                     </>
                 ) : (
-                    ''
+                    <EmptyList />
                 )}
             </section>
 
@@ -69,7 +69,7 @@ export default function Dashboard() {
                         ))}
                     </>
                 ) : (
-                    ''
+                    <EmptyList />
                 )}
             </section>
         </>

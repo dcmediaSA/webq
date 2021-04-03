@@ -10,6 +10,7 @@ export default function Ticket() {
     const newTicket = () => {
         socket.emit('ticket.create', null, (response) => {
             setTicket(response);
+            console.log(`printing ticket: ${ticket.number}`);
         });
     };
 
@@ -25,8 +26,6 @@ export default function Ticket() {
             <button onClick={newTicket} type="button">
                 Print Ticket
             </button>
-
-            {ticket ? <span>{ticket.number}</span> : ''}
         </>
     );
 }
