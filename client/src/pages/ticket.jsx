@@ -1,13 +1,14 @@
 import React, { useState, useContext } from 'react';
+import { IoPrint, IoTime } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO } from '../components';
+import { SectionTitle, SEO, Button } from '../components';
 
 export default function Ticket() {
     const [ticket, setTicket] = useState(null);
 
     const { socket } = useContext(SocketContext);
 
-    const newTicket = () => {
+    const handleClick = () => {
         socket.emit('ticket.create', null, (response) => {
             setTicket(response);
             console.log(`printing ticket: ${ticket.number}`);
@@ -23,9 +24,10 @@ export default function Ticket() {
                 subtitle="Print your ticket and join the queue."
             />
 
-            <button onClick={newTicket} type="button">
-                Print Ticket
-            </button>
+            <Button event={handleClick}>
+                <span>Print Ticket</span>
+                <IoPrint />
+            </Button>
         </>
     );
 }

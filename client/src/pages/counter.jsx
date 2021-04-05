@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
+import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO } from '../components';
+import { SectionTitle, SEO, Button } from '../components';
 
 const Redirect = () => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -46,9 +47,19 @@ export default function Counter() {
                 subtitle="Notify waiting cliients you're ready to see them."
             />
 
-            <button onClick={handleClick} type="button">
-                {!active ? <span>Start Session</span> : <span>End Session</span>}
-            </button>
+            <Button event={handleClick}>
+                {!active ? (
+                    <>
+                        <span>Start Session</span>
+                        <IoAddCircle />
+                    </>
+                ) : (
+                    <>
+                        <span>End Session</span>
+                        <IoRemoveCircle />
+                    </>
+                )}
+            </Button>
         </>
     );
 }

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { IoAddCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO } from '../components';
+import { SectionTitle, SEO, Button } from '../components';
 
 export default function Home() {
     const { socket } = useContext(SocketContext);
@@ -11,7 +11,7 @@ export default function Home() {
         setCounter(event.target.value);
     };
 
-    const handleSubmit = (e) => {
+    const handleClick = (e) => {
         if (!counter) {
             e.preventDefault();
         } else {
@@ -38,9 +38,10 @@ export default function Home() {
                     onChange={handleChange}
                 />
 
-                <Link onClick={handleSubmit} to={`/counter?number=${counter}`}>
-                    <button type="submit">Add Counter</button>
-                </Link>
+                <Button event={handleClick} internalLink={`/counter?number=${counter}`}>
+                    <span>Add Counter</span>
+                    <IoAddCircle />
+                </Button>
             </form>
         </>
     );
