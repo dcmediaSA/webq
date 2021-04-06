@@ -1,7 +1,36 @@
 import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 import { IoAddCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
 import { SectionTitle, SEO, Button, Card } from '../components';
+
+const StyledForm = styled.form`
+    display: grid;
+    background-color: var(--gray-50);
+    padding: var(--space-16);
+
+    @media (min-width: 768px) {
+        padding: var(--space-24);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    input[type='number'] {
+        border: 1px solid var(--gray-200);
+        background: var(--white);
+        padding: var(--space-16);
+        border-radius: var(--space-4);
+        margin-bottom: var(--space-16);
+
+        @media (min-width: 768px) {
+            margin-right: var(--space-24);
+            margin-bottom: var(--space-0);
+        }
+
+        &::placeholder {
+            color: var(--gray-600);
+        }
+    }
+`;
 
 export default function Home() {
     const { socket } = useContext(SocketContext);
@@ -28,7 +57,7 @@ export default function Home() {
                     title="Counter Setup"
                     subtitle="Select your assigned counter number below."
                 />
-                <form>
+                <StyledForm>
                     <input
                         required
                         type="number"
@@ -42,7 +71,7 @@ export default function Home() {
                         <span>Add Counter</span>
                         <IoAddCircle />
                     </Button>
-                </form>
+                </StyledForm>
             </Card>
         </>
     );

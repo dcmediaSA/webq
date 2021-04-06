@@ -1,7 +1,17 @@
 import React, { useState, useContext } from 'react';
+import styled from 'styled-components';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
 import { SectionTitle, SEO, Button, Card } from '../components';
+
+const StyledSection = styled.section`
+    background-color: var(--gray-50);
+    padding: var(--space-16);
+
+    @media (min-width: 768px) {
+        padding: var(--space-24);
+    }
+`;
 
 const Redirect = () => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -47,19 +57,21 @@ export default function Counter() {
                     title={`Counter ${counter}`}
                     subtitle="Notify waiting cliients you're ready to see them."
                 />
-                <Button event={handleClick}>
-                    {!active ? (
-                        <>
-                            <span>Start Session</span>
-                            <IoAddCircle />
-                        </>
-                    ) : (
-                        <>
-                            <span>End Session</span>
-                            <IoRemoveCircle />
-                        </>
-                    )}
-                </Button>
+                <StyledSection>
+                    <Button event={handleClick}>
+                        {!active ? (
+                            <>
+                                <span>Start Session</span>
+                                <IoAddCircle />
+                            </>
+                        ) : (
+                            <>
+                                <span>End Session</span>
+                                <IoRemoveCircle />
+                            </>
+                        )}
+                    </Button>
+                </StyledSection>
             </Card>
         </>
     );
