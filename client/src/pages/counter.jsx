@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button, Card } from '../components';
+import { Layout, Wrapper, SectionTitle, SEO, Button, Card } from '../components';
 
 const StyledSection = styled.section`
     background-color: var(--gray-50);
@@ -49,30 +49,32 @@ export default function Counter() {
     };
 
     return (
-        <>
+        <Layout>
             <SEO title="Counter" />
 
-            <Card>
-                <SectionTitle
-                    title={`Counter ${counter}`}
-                    subtitle="Notify waiting cliients you're ready to see them."
-                />
-                <StyledSection>
-                    <Button event={handleClick}>
-                        {!active ? (
-                            <>
-                                <span>Start Session</span>
-                                <IoAddCircle />
-                            </>
-                        ) : (
-                            <>
-                                <span>End Session</span>
-                                <IoRemoveCircle />
-                            </>
-                        )}
-                    </Button>
-                </StyledSection>
-            </Card>
-        </>
+            <Wrapper>
+                <Card>
+                    <SectionTitle
+                        title={`Counter ${counter}`}
+                        subtitle="Notify waiting cliients you're ready to see them."
+                    />
+                    <StyledSection>
+                        <Button event={handleClick}>
+                            {!active ? (
+                                <>
+                                    <span>Start Session</span>
+                                    <IoAddCircle />
+                                </>
+                            ) : (
+                                <>
+                                    <span>End Session</span>
+                                    <IoRemoveCircle />
+                                </>
+                            )}
+                        </Button>
+                    </StyledSection>
+                </Card>
+            </Wrapper>
+        </Layout>
     );
 }

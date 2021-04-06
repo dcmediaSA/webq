@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { IoAddCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button, Card } from '../components';
+import { Layout, SectionTitle, SEO, Button, Card, Wrapper } from '../components';
 
 const StyledForm = styled.form`
     display: grid;
@@ -49,30 +49,32 @@ export default function Home() {
     };
 
     return (
-        <>
+        <Layout>
             <SEO title="Home" />
 
-            <Card>
-                <SectionTitle
-                    title="Counter Setup"
-                    subtitle="Select your assigned counter number below."
-                />
-                <StyledForm>
-                    <input
-                        required
-                        type="number"
-                        min="1"
-                        max="99"
-                        defaultValue="0"
-                        onChange={handleChange}
+            <Wrapper>
+                <Card>
+                    <SectionTitle
+                        title="Counter Setup"
+                        subtitle="Select your assigned counter number below."
                     />
+                    <StyledForm>
+                        <input
+                            required
+                            type="number"
+                            min="1"
+                            max="99"
+                            defaultValue="0"
+                            onChange={handleChange}
+                        />
 
-                    <Button event={handleClick} internalLink={`/counter?number=${counter}`}>
-                        <span>Add Counter</span>
-                        <IoAddCircle />
-                    </Button>
-                </StyledForm>
-            </Card>
-        </>
+                        <Button event={handleClick} internalLink={`/counter?number=${counter}`}>
+                            <span>Add Counter</span>
+                            <IoAddCircle />
+                        </Button>
+                    </StyledForm>
+                </Card>
+            </Wrapper>
+        </Layout>
     );
 }

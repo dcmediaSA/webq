@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
 import { IoPrint } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button, Card } from '../components';
+import { Layout, Wrapper, SectionTitle, SEO, Button, Card } from '../components';
 
 const StyledSection = styled.section`
     background-color: var(--gray-50);
@@ -26,21 +26,24 @@ export default function Ticket() {
     };
 
     return (
-        <>
+        <Layout>
             <SEO title="Ticket" />
 
-            <Card>
-                <SectionTitle
-                    title="Ticketing System"
-                    subtitle="Print your ticket and join the queue."
-                />
-                <StyledSection>
-                    <Button event={handleClick}>
-                        <span>Print Ticket</span>
-                        <IoPrint />
-                    </Button>
-                </StyledSection>
-            </Card>
-        </>
+            <Wrapper>
+                {' '}
+                <Card>
+                    <SectionTitle
+                        title="Ticketing System"
+                        subtitle="Print your ticket and join the queue."
+                    />
+                    <StyledSection>
+                        <Button event={handleClick}>
+                            <span>Print Ticket</span>
+                            <IoPrint />
+                        </Button>
+                    </StyledSection>
+                </Card>
+            </Wrapper>
+        </Layout>
     );
 }
