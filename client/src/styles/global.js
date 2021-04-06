@@ -9,6 +9,23 @@ const GlobalStyle = createGlobalStyle`
         --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
     }
 
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--gray-500);
+    }
+
+    *::-webkit-scrollbar {
+        width: 12px;
+    }
+
+    *::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        background-color: var(--gray-500);
+    }
+
     html, body {
         background: var(--gray-100);
         font-family: "Poppins", sans-serif;
