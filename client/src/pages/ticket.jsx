@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
-import { IoPrint, IoTime } from 'react-icons/io5';
+import { IoPrint } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button } from '../components';
+import { SectionTitle, SEO, Button, Card } from '../components';
 
 export default function Ticket() {
     const [ticket, setTicket] = useState(null);
@@ -19,15 +19,16 @@ export default function Ticket() {
         <>
             <SEO title="Ticket" />
 
-            <SectionTitle
-                title="Ticketing System"
-                subtitle="Print your ticket and join the queue."
-            />
-
-            <Button event={handleClick}>
-                <span>Print Ticket</span>
-                <IoPrint />
-            </Button>
+            <Card>
+                <SectionTitle
+                    title="Ticketing System"
+                    subtitle="Print your ticket and join the queue."
+                />
+                <Button event={handleClick}>
+                    <span>Print Ticket</span>
+                    <IoPrint />
+                </Button>
+            </Card>
         </>
     );
 }

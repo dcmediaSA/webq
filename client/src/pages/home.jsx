@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { IoAddCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button } from '../components';
+import { SectionTitle, SEO, Button, Card } from '../components';
 
 export default function Home() {
     const { socket } = useContext(SocketContext);
@@ -23,26 +23,27 @@ export default function Home() {
         <>
             <SEO title="Home" />
 
-            <SectionTitle
-                title="Counter Setup"
-                subtitle="Select your assigned counter number below."
-            />
-
-            <form>
-                <input
-                    required
-                    type="number"
-                    min="1"
-                    max="99"
-                    defaultValue="0"
-                    onChange={handleChange}
+            <Card>
+                <SectionTitle
+                    title="Counter Setup"
+                    subtitle="Select your assigned counter number below."
                 />
+                <form>
+                    <input
+                        required
+                        type="number"
+                        min="1"
+                        max="99"
+                        defaultValue="0"
+                        onChange={handleChange}
+                    />
 
-                <Button event={handleClick} internalLink={`/counter?number=${counter}`}>
-                    <span>Add Counter</span>
-                    <IoAddCircle />
-                </Button>
-            </form>
+                    <Button event={handleClick} internalLink={`/counter?number=${counter}`}>
+                        <span>Add Counter</span>
+                        <IoAddCircle />
+                    </Button>
+                </form>
+            </Card>
         </>
     );
 }

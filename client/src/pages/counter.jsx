@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { IoAddCircle, IoRemoveCircle } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
-import { SectionTitle, SEO, Button } from '../components';
+import { SectionTitle, SEO, Button, Card } from '../components';
 
 const Redirect = () => {
     const searchParams = new URLSearchParams(window.location.search);
@@ -42,24 +42,25 @@ export default function Counter() {
         <>
             <SEO title="Counter" />
 
-            <SectionTitle
-                title={`Counter ${counter}`}
-                subtitle="Notify waiting cliients you're ready to see them."
-            />
-
-            <Button event={handleClick}>
-                {!active ? (
-                    <>
-                        <span>Start Session</span>
-                        <IoAddCircle />
-                    </>
-                ) : (
-                    <>
-                        <span>End Session</span>
-                        <IoRemoveCircle />
-                    </>
-                )}
-            </Button>
+            <Card>
+                <SectionTitle
+                    title={`Counter ${counter}`}
+                    subtitle="Notify waiting cliients you're ready to see them."
+                />
+                <Button event={handleClick}>
+                    {!active ? (
+                        <>
+                            <span>Start Session</span>
+                            <IoAddCircle />
+                        </>
+                    ) : (
+                        <>
+                            <span>End Session</span>
+                            <IoRemoveCircle />
+                        </>
+                    )}
+                </Button>
+            </Card>
         </>
     );
 }
