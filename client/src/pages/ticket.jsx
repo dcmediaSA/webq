@@ -1,8 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import styled from 'styled-components';
 import { IoPrint } from 'react-icons/io5';
+import { useReactToPrint } from 'react-to-print';
 import { SocketContext } from '../context/socket-context';
-import { Layout, Wrapper, SectionTitle, SEO, Button, Card } from '../components';
+import { Layout, Label, Wrapper, SectionTitle, SEO, Button, Card } from '../components';
 
 const StyledSection = styled.section`
     background-color: var(--gray-50);
@@ -15,13 +16,18 @@ const StyledSection = styled.section`
 
 export default function Ticket() {
     const [ticket, setTicket] = useState(null);
+    const componentRef = useRef();
 
     const { socket } = useContext(SocketContext);
+
+    const handlePrint = useReactToPrint({
+        content: () => componentRef.current,
+    });
 
     const handleClick = () => {
         socket.emit('ticket.create', null, (response) => {
             setTicket(response);
-            console.log(`printing ticket: ${ticket.number}`);
+            handlePrint();
         });
     };
 
@@ -30,7 +36,6 @@ export default function Ticket() {
             <SEO title="Ticket" />
 
             <Wrapper>
-                {' '}
                 <Card>
                     <SectionTitle
                         title="Ticketing System"
@@ -42,6 +47,11 @@ export default function Ticket() {
                             <IoPrint />
                         </Button>
                     </StyledSection>
+                    {ticket && (
+                        <div style={{ display: 'none' }}>
+                            <Label number={ticket.number} ref={componentRef} />
+                        </div>
+                    )}
                 </Card>
             </Wrapper>
         </Layout>
