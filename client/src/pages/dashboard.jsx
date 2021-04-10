@@ -44,6 +44,30 @@ const StyledSection = styled.section`
     @media (min-width: 768px) {
         padding: var(--space-24);
     }
+
+    .heading {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: var(--space-24);
+
+        span {
+            font-weight: 900;
+            color: var(--gray-500);
+            font-family: 'Space Mono', monospace;
+        }
+    }
+
+    ul {
+        display: flex;
+        justify-content: space-between;
+
+        li {
+            font-weight: 900;
+            font-family: 'Space Mono', monospace;
+            color: var(--gray-700);
+            font-size: var(--space-32);
+        }
+    }
 `;
 
 export default function Dashboard() {
@@ -116,6 +140,9 @@ export default function Dashboard() {
                     <StyledSection>
                         {queue.length !== 0 ? (
                             <>
+                                <div className="heading">
+                                    <span>Ticket Number</span>
+                                </div>
                                 {queue.map(({ number }) => (
                                     <ul key={number}>
                                         <li>{number}</li>
@@ -133,6 +160,10 @@ export default function Dashboard() {
                     <StyledSection>
                         {tickets.length !== 0 ? (
                             <>
+                                <div className="heading">
+                                    <span>Ticket Number</span>
+                                    <span>Counter</span>
+                                </div>
                                 {tickets.map(({ number, counter }) => (
                                     <ul key={number}>
                                         <li>{number}</li>

@@ -1,16 +1,18 @@
 import React, { useState, useContext } from 'react';
 import styled from 'styled-components';
-import { IoAddCircle } from 'react-icons/io5';
+import { IoAddCircle, IoTicket, IoMegaphone } from 'react-icons/io5';
 import { SocketContext } from '../context/socket-context';
 import { Layout, SectionTitle, SEO, Button, Card, Wrapper } from '../components';
 
 const StyledForm = styled.form`
     display: grid;
+    gap: var(--space-16);
     background-color: var(--gray-50);
     padding: var(--space-16);
 
     @media (min-width: 768px) {
         padding: var(--space-24);
+        gap: var(--space-24);
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
@@ -19,16 +21,24 @@ const StyledForm = styled.form`
         background: var(--white);
         padding: var(--space-16);
         border-radius: var(--space-4);
-        margin-bottom: var(--space-16);
-
-        @media (min-width: 768px) {
-            margin-right: var(--space-24);
-            margin-bottom: var(--space-0);
-        }
 
         &::placeholder {
             color: var(--gray-600);
         }
+    }
+`;
+
+const StyledFooter = styled.footer`
+    display: grid;
+    gap: var(--space-16);
+    background-color: var(--white);
+    border-top: 1px solid var(--gray-200);
+    padding: var(--space-16);
+
+    @media (min-width: 768px) {
+        gap: var(--space-24);
+        padding: var(--space-24);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 `;
 
@@ -63,7 +73,6 @@ export default function Home() {
                             required
                             type="number"
                             min="1"
-                            max="99"
                             defaultValue="0"
                             onChange={handleChange}
                         />
@@ -73,6 +82,17 @@ export default function Home() {
                             <IoAddCircle />
                         </Button>
                     </StyledForm>
+
+                    <StyledFooter>
+                        <Button internalLink="/ticket">
+                            <span>Ticketing System</span>
+                            <IoTicket />
+                        </Button>
+                        <Button internalLink="/dashboard">
+                            <span>Notification Dashboard</span>
+                            <IoMegaphone />
+                        </Button>
+                    </StyledFooter>
                 </Card>
             </Wrapper>
         </Layout>
