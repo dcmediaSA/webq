@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
+import { useSpeechSynthesis } from 'react-speech-kit';
 import { SocketContext } from '../context/socket-context';
 import { Layout, SectionTitle, SEO, EmptyList, Card } from '../components';
 
@@ -52,6 +53,26 @@ export default function Dashboard() {
 
     const { socket } = useContext(SocketContext);
 
+    const { cancel } = useSpeechSynthesis();
+
+    const onEnd = () => {
+        cancel();
+        setTicket('');
+    };
+
+    const { speak } = useSpeechSynthesis({
+        onEnd,
+    });
+
+    useEffect(() => {
+        socket.on('ticket.call', (response) => {
+            const { number, counter } = response;
+            speak({
+                text: `Ticket ${number}, Please proceed to Counter ${counter}`,
+            });
+        });
+    }, [socket, speak]);
+
     useEffect(() => {
         socket.on('ticket.call', (response) => {
             const { number, counter } = response;
@@ -96,7 +117,7 @@ export default function Dashboard() {
                         {queue.length !== 0 ? (
                             <>
                                 {queue.map(({ number }) => (
-                                    <ul>
+                                    <ul key={number}>
                                         <li>{number}</li>
                                     </ul>
                                 ))}
@@ -113,7 +134,7 @@ export default function Dashboard() {
                         {tickets.length !== 0 ? (
                             <>
                                 {tickets.map(({ number, counter }) => (
-                                    <ul>
+                                    <ul key={number}>
                                         <li>{number}</li>
                                         <li>{counter}</li>
                                     </ul>
